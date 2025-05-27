@@ -1,6 +1,6 @@
 ekf_filter_node:
   ros__parameters:
-    frequency: 50.0
+    frequency: 10.0
 
     sensor_timeout: 0.0
 
@@ -19,7 +19,7 @@ ekf_filter_node:
     # unhappy with any settings or data.
     print_diagnostics: true
 
-    debug: false
+    debug: true
 
     # Defaults to "robot_localization_debug.txt" if unspecified. Please specify the full path.
     debug_out_file: robot_localization_debug.txt
@@ -68,10 +68,10 @@ ekf_filter_node:
     # do not provide some of the state variables estimated by the filter. For example, a TwistWithCovarianceStamped message
     # has no pose information, so the first six values would be meaningless in that case. Each vector defaults to all false
     # if unspecified, effectively making this parameter required for each sensor.
-    odom0_config: [true,  true,  true,
+    odom0_config: [true,  true,  false,
                   false, false, true,
-                  false, false, false,
-                  false, false, false,
+                  true, true, false,
+                  false, false, true,
                   false, false, false]
 
     # If you have high-frequency data or are running with a low frequency parameter value, then you may want to increase
@@ -118,7 +118,7 @@ ekf_filter_node:
               true, false, true,      # Angular velocity (vroll, vpitch, vyaw)
               true, false, true]      # Linear acceleration (ax, ay, az)
 
-    imu0_nodelay: false
+    imu0_nodelay: true
     imu0_differential: false
     imu0_relative: true
     imu0_queue_size: 6
@@ -128,7 +128,9 @@ ekf_filter_node:
 
     # imu0_covariance: [0.1, 0.0, 0.0, 0.0, 0.1, 0.0, 0.0, 0.0, 0.02]
     imu0_covariance: [0.2, 0.0, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.1]
-
+    # imu0_angular_velocity_covariance: [0.01, 0.0, 0.0,
+    #                                0.0, 0.01, 0.0,
+    #                                0.0, 0.0, 0.01]
 
 
     # # [ADVANCED] Some IMUs automatically remove acceleration due to gravity, and others don't. If yours doesn't, please set
@@ -147,7 +149,7 @@ ekf_filter_node:
     # predicition. Note that if an acceleration measurement for the variable in question is available from one of the
     # inputs, the control term will be ignored.
     # Whether or not we use the control input during predicition. Defaults to false.
-    use_control: false
+    use_control: true
     control_update_topic: /cmd_vel_safe
     # Whether the input (assumed to be cmd_vel) is a geometry_msgs/Twist or geometry_msgs/TwistStamped message. Defaults to
     # false.

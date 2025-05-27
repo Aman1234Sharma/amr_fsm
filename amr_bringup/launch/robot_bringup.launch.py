@@ -95,6 +95,6 @@ def generate_launch_description():
         obstacle_stop_node,
         # realsense_camera,
         odom_fused,
-        #ui_launch,
+        ui_launch,
         nav_launch
     ])
