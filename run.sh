@@ -14,7 +14,7 @@ xhost +local:root
 image_name="amr-ros2-humble"
 container_name="ros2_dev"
 
-# Check for NVIDIA GPU support
+Check for NVIDIA GPU support
 if command -v nvidia-smi &>/dev/null && nvidia-smi -L &>/dev/null; then
     echo "NVIDIA GPU detected. Configuring for NVIDIA runtime..."
     DOCKER_ARGS+=("--runtime=nvidia")
@@ -29,9 +29,15 @@ fi
 if docker ps --format '{{.Names}}' | grep -q "$container_name"; then
     echo "Container is already running. Attaching to it..."
     docker exec -it $container_name /bin/bash
+
+# If container exists but is stopped, start and attach
+elif docker ps -a --format '{{.Names}}' | grep -q "$container_name"; then
+    echo "Container exists but is stopped. Restarting..."
+    docker start -ai "$container_name"
+    
 else
     echo "Starting a new container..."
-    docker run -it --rm \
+    docker run -it  \
         ${DOCKER_ARGS[@]} \
         -e DISPLAY=$DISPLAY \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \

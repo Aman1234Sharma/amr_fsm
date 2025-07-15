@@ -24,7 +24,8 @@ def generate_launch_description():
         name='pf_r2000',
         executable='ros_main',
         output='screen',
-        parameters=[config]
+        parameters=[config],
+       # remappings=[('/pf/scan','/jn0/base_scan')]
     )
 
     include_desc = IncludeLaunchDescription(

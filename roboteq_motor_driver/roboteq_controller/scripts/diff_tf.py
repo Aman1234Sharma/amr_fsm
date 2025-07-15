@@ -122,7 +122,7 @@ class DiffTf(Node):
         transform_stamped_msg.transform.rotation.z = quaternion.z
         transform_stamped_msg.transform.rotation.w = quaternion.w
 
-        self.odom_broadcaster.sendTransform(transform_stamped_msg)
+       # self.odom_broadcaster.sendTransform(transform_stamped_msg)  # this line publishes tf
 
         odom = Odometry()
         odom.header.stamp = now.to_msg()

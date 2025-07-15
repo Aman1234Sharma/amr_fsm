@@ -3,9 +3,9 @@
      Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot 
-  name="cad_assembly_amr_final_1">
+  name="cad_assembly_amr_final_1" xmlns:xacro="http://ros.org/wiki/xacro" >
 <include filename="$(find amr_description)/urdf/cad_assembly_amr_final_1.trans" />
-
+<xacro:include filename="$(find realsense2_description)/urdf/_d435i.urdf.xacro"/>
 <ros2_control name="hw" type="system">
       <!-- <hardware> -->
         <!-- <plugin>diffdrive_bot/DiffBotSystemHardware</plugin> -->
@@ -665,17 +665,23 @@
 <!--  -->
 
 <link
-    name="camera_imu_optical_frame">
+    name="camera_attachment_frame">
     
     <visual>
       <origin
         xyz="-0.24 0.03 -0.308"
         rpy="0 0 0" />
-    </visual>
-    
+    <!-- <geometry>
+      <box size="0.025 0.09 0.025"/>
+    </geometry>
+    <material name="">
+      <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+    </material> -->
+    </visual>   
   </link>
+
   <joint
-    name="camera_imu_optical_frame_joint"
+    name="camera_attachment_frame_joint"
     type="fixed">
     <origin
       xyz="0.26 -0.03 0.178"
@@ -683,14 +689,16 @@
     <parent
       link="base_link" />
     <child
-      link="camera_imu_optical_frame" />
+      link="camera_attachment_frame" />
     <axis
       xyz="0 0 0" />
   </joint>
+  
+<xacro:sensor_d435i parent="camera_attachment_frame" use_nominal_extrinsics="true">
+  <origin xyz="0 0 0" rpy="0 0 0"/>
+</xacro:sensor_d435i>
 
-
-
-  <link
+  <link  
     name="Link7">
     <inertial>
       <origin

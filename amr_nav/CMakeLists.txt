@@ -14,6 +14,7 @@ find_package(ament_cmake REQUIRED)
 install(
   DIRECTORY
   launch
+  behaviour_tree
   config
   params
   maps
