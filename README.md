@@ -78,3 +78,7 @@ This repository contains the ROS 2 Humble-based software stack developed for con
 ```bash
 # Launch full stack (navigation + odometry + visualization)
 ros2 launch amr_bringup new_robot_bringup.launch.py
+
+# For visualization only
+ros2 launch amr_description display.launch.py
+
