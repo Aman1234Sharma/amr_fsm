@@ -44,6 +44,7 @@ This repository contains the ROS 2 Humble-based software stack developed for con
     - Behavior Tree Server
     - Costmaps
     - Recovery Server
+    - amcl
 - `launch/nav.launch.py`: Most recent and stable launch file that brings up the complete navigation stack.
 - `maps/`: Environment maps of:
   - IAFSM Lab
