@@ -18,7 +18,7 @@ def generate_launch_description():
         get_package_share_directory('amr_description'), 'launch', 'display.launch.py')
 
     ekf_config = os.path.join(
-        get_package_share_directory('amr_bringup'), 'launch', 'ekf.yaml')
+        get_package_share_directory('sensor_fusion'), 'config', 'ekf.yaml')
 
     # --- Optional: RealSense + RGBD Odometry (commented) ---
     # realsense_launch = os.path.join(

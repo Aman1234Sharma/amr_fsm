@@ -99,7 +99,7 @@ def generate_launch_description():
             PythonLaunchDescriptionSource(amr_display_launch)
         ),
 
-        # Include Roboteq Controller Launch, diff_tf.py publishes tf from odom to base_link
+        # Include Roboteq Controller Launch 
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
                 PathJoinSubstitution([
@@ -110,6 +110,18 @@ def generate_launch_description():
             )
         ),
 
+        # LiDAR Odometry Node (RTAB-Map ICP)
+        Node(
+            package='rtabmap_odom',
+            executable='icp_odometry',
+            name='icp_odometry',
+            output='screen',
+            parameters=[{'publish_tf': True}],
+            remappings=[
+                ('scan', 'pf/scan'),
+                ('odom', 'lidar/odom')
+            ]
+        ),
 
         # RGBD Sync Node
         Node(
