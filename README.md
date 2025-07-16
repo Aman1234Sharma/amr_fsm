@@ -88,6 +88,8 @@ Follow these steps to power on and connect to the AMR wirelessly via SSH:
    ```bash
    ssh fsm-amr@192.168.43.227
 
+⚙️ Note: The AMR is configured with a static IP 192.168.43.227, so you can reliably SSH into it after every boot.
+
 
 ## 🚀 Quick Start
 
