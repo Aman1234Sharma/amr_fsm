@@ -26,9 +26,9 @@ This repository contains the ROS 2 Humble-based software stack developed for con
 
 - Contains:
   - Individual odometry launch files for different odometry sources.
-  - Mapping launch files for:
-    - 2D Occupancy Grid Map (e.g., Cartographer/SLAM Toolbox)
-    - 3D Pointcloud Map (e.g., RTAB-Map)
+  - Mapping launch file for:
+    - 2D Occupancy Grid Map
+    - 3D Pointcloud Map
 
 ---
 
