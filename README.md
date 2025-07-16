@@ -72,6 +72,22 @@ This repository contains the ROS 2 Humble-based software stack developed for con
   - Custom ROS 2 driver to interface with Roboteq motor controllers for mobile base control.
 
 ---
+---
+
+## 🔌 Connecting to the AMR
+
+Follow these steps to power on and connect to the AMR wirelessly via SSH:
+
+1. 🔄 **Rotate the power knob** on the AMR to switch it on.
+2. 📱 **Start your phone's mobile hotspot** with the following settings:
+   - **SSID**: `IAFSM24`
+   - **Password**: `iafsm#2017`
+3. ⏳ **Wait 30–60 seconds** for the AMR to automatically connect to the hotspot.
+4. 💻 On your laptop, **connect to the same Wi-Fi network** (`IAFSM24`).
+5. 🔐 Open a terminal and run the following command to SSH into the AMR:
+   ```bash
+   ssh fsm-amr@192.168.43.227
+
 
 ## 🚀 Quick Start
 
