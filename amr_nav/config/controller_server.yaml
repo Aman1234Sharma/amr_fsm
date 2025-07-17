@@ -7,7 +7,7 @@
       min_y_velocity_threshold: 0.0
       min_theta_velocity_threshold: 0.001
       failure_tolerance: 0.3
-      odom_topic : "/lidar/odom" # "/odometry/filtered"
+      odom_topic : "/odometry/filtered" #"/lidar/odom" # "/odometry/filtered"
       progress_checker_plugins: "progress_checker" # progress_checker_plugin: "progress_checker" For Humble and older
       goal_checker_plugins: ["general_goal_checker"]
       controller_plugins: ["FollowPath"]
@@ -19,7 +19,7 @@
 
       general_goal_checker:
         plugin: "nav2_controller::SimpleGoalChecker"
-        xy_goal_tolerance: 0.25
+        xy_goal_tolerance: 0.5 # default = 0.25
         yaw_goal_tolerance: 0.25
         stateful: True
         latch_xy_goal_tolerance: true
@@ -33,10 +33,10 @@
         vx_std: 0.4 #tune
         vy_std: 0.4 #tune 
         wz_std: 0.4 #tune
-        vx_max: 0.2 #tune
-        vx_min: -0.15   #tune
+        vx_max: 0.5 #tune
+        vx_min: -0.4   #tune
         vy_max: 0.0 #tune
-        wz_max: 0.3 #tune
+        wz_max: 0.5 #tune
         retry_attempt_limit: 3 #tune
         iteration_count: 1 # recommended to keep as 1
         prune_distance: 1.7 # default 1.5
@@ -84,7 +84,7 @@
 
         
         ObstaclesCritic:
-          enabled: false
+          enabled: true
           cost_power: 1
           repulsion_weight: 1.0 default = 1.5
           critical_weight: 20.0 #default 20
@@ -93,7 +93,7 @@
           collision_margin_distance: 0.2 #default = 0.1
           near_goal_distance: 0.2 # default = 0.5
           cost_scaling_factor: 3.0 #  must be same as costmap cost_scaling factor
-          inflation_radius: 0.35 # must be same as costmap inflation radius
+          inflation_radius: 0.45 # must be same as costmap inflation radius
         CostCritic:
           enabled: true
           cost_power: 1
@@ -109,7 +109,7 @@
         PathAlignCritic:
           enabled: true
           cost_power: 1
-          cost_weight: 10.0 #default = 10
+          cost_weight: 23.0 #default = 10
           max_path_occupancy_ratio: 0.05
           trajectory_point_step: 4
           threshold_to_consider: 0.5
@@ -118,13 +118,13 @@
         PathFollowCritic:
           enabled: true
           cost_power: 1
-          cost_weight: 5.0 #default = 5
+          cost_weight: 12.0 #default = 5
           offset_from_furthest: 5
           threshold_to_consider: 1.4
         PathAngleCritic:
           enabled: true
           cost_power: 1
-          cost_weight: 2.2 #default = 2.2
+          cost_weight: 6.2 #default = 2.2
           offset_from_furthest: 20
           threshold_to_consider: 0.5
           max_angle_to_furthest: 0.785398
@@ -256,6 +256,6 @@
         inflation_layer:
           plugin: "nav2_costmap_2d::InflationLayer"
           cost_scaling_factor: 3.0
-          inflation_radius: 0.35
+          inflation_radius: 0.45
         always_send_full_costmap: True
 
