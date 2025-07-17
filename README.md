@@ -93,10 +93,10 @@ Follow these steps to power on and connect to the AMR wirelessly via SSH:
 You will be prompted to enter the password:
 Password: iafsm#2017
 
-📁 Accessing Files in the Docker Container
+## 📁 Accessing Files in the Docker Container
 
 Once logged in via SSH, you can access the files in the Docker container by running the following commands:
-
+```bash
 cd amr-fsm/src
 ./run.sh
 source install/setup.bash
