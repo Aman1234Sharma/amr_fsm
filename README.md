@@ -98,7 +98,7 @@ Password: iafsm#2017
 
 Once logged in via SSH, you can access the files in the Docker container by running the following commands:
 ```bash
-cd amr-fsm/src
+cd amr_fsm/src
 ./run.sh
 source install/setup.bash
 ```
