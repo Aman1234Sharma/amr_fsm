@@ -143,36 +143,24 @@ Here are some quick commands to help you run different modules of the **AMR syst
 ```bash
 ros2 run roboteq_controller driver.py
 ```
----
-
 ### 2. **Do Mapping of the Environment**
 
 ```bash
 ros2 launch amr_mapping_and_odometry mapping.launch.py
 ```
----
-
 ### 3. **Run Sensor Fusion**
 
 ```bash
 ros2 launch sensor_fusion sensor_fusion.launch.py
 ```
----
-
 ### 4. **Run Navigation Stack**
 
 ```bash
 ros2 launch amr_nav nav.launch.py
 ```
-
 **Note**: If you want to load a **different map** than the default, make sure to **change the name/path of the map** in the `launch` file. You can do this by updating the map file path in the `nav.launch.py` configuration.
 
 ---
-
-### **Conclusion**
-
-These quick commands provide easy access to essential functionalities for controlling the robot, mapping the environment, running sensor fusion, and running the navigation stack.
-
 ## 🖥️ Hardware Overview
 
 ### 🤖 Motor
