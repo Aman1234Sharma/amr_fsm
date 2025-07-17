@@ -72,7 +72,6 @@ This repository contains the ROS 2 Humble-based software stack developed for con
   - Custom ROS 2 driver to interface with Roboteq motor controllers for mobile base control.
 
 ---
----
 
 ## 🔌 Connecting to the AMR
 
@@ -113,7 +112,7 @@ Password: iafsm#2017
    ```bash
    export ROS_HOSTNAME=<pc-ip>  # Set to your laptop's IP address
    ```
-By setting these environment variables, you ensure that both the **AMR robot** and **Ubuntu laptop** are communicating within the same **DDS domain** and are able to exchange messages across the network.
+By setting these environment variables, you ensure that both the **AMR robot** and **Ubuntu laptop** are communicating within the same **DDS domain** and are able to exchange messages across the network.(just run a simple turtlesim node on amr and check whether that topic is echoed in your remote laptop to check data transmission is working or not)
 
 
 ## 📁 Accessing Files in the Docker Container
