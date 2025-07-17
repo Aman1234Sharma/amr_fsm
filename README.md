@@ -95,50 +95,15 @@ You will be prompted to enter the password:
 Password: iafsm#2017
 ```
 
-## 2. **Set ROS 2 Environment Variables**
+## 2. **Set ROS 2 Environment Variables(For the new user, only one time step)**
 
-ROS 2 relies on the **DDS (Data Distribution Service)** for communication, and setting up the following environment variables will ensure the nodes can communicate across both systems.
-
-### **On the AMR (Robot)**:
-
-1. **Set `ROS_DOMAIN_ID`** (Optional, but recommended for isolation):
-   - The `ROS_DOMAIN_ID` ensures communication within the same network domain, especially if you have multiple DDS-based systems or networks.
-   - Set a unique domain ID (typically `0` if no custom isolation is needed):
-
-   ```bash
-   export ROS_DOMAIN_ID=0  # Set a unique domain ID (default is 0)
-   ```
-
-2. **Set `ROS_HOSTNAME`**:
-   - Replace `<robot-ip>` with the IP address of the AMR robot:
-
-   ```bash
-   export ROS_HOSTNAME=<robot-ip>  # Set to AMR's IP address
-   ```
-
-3. **Set `ROS_MASTER_URI`**:
-   - This variable is **not needed** in **ROS 2** for regular DDS communication, but it can be used for legacy systems or hybrid ROS 1 + ROS 2 setups. If you're using **pure ROS 2**, you can skip this step.
-
-   ```bash
-   export ROS_MASTER_URI=http://<robot-ip>:11311  # Set ROS Master URI to AMR's IP
-   ```
-
-4. **Launch ROS 2 Nodes on the AMR**:
-   - After setting the environment variables, launch your **ROS 2 nodes** on the AMR to start its functionality:
-
-   ```bash
-   ros2 launch amr_bringup new_robot_bringup.launch.py
-   ```
-
----
-
-### **On the Ubuntu Laptop**:
+### **On your laptop Laptop**:
 
 1. **Set `ROS_DOMAIN_ID`**:
    - Use the same domain ID as the AMR to ensure both systems are communicating in the same DDS domain:
 
    ```bash
-   export ROS_DOMAIN_ID=0  # Use the same domain ID as the AMR
+   export ROS_DOMAIN_ID=30  # Since on AMR ROS_DOMAIN_ID is already set as 30
    ```
 
 2. **Set `ROS_HOSTNAME`**:
@@ -147,16 +112,6 @@ ROS 2 relies on the **DDS (Data Distribution Service)** for communication, and s
    ```bash
    export ROS_HOSTNAME=<pc-ip>  # Set to your laptop's IP address
    ```
-
-3. **Set `ROS_MASTER_URI`**:
-   - Although `ROS_MASTER_URI` is generally **not necessary** in **ROS 2**, it can be used for **legacy setups** or **hybrid configurations** with ROS 1. For **pure ROS 2 setups**, you don't need to set this variable.
-
-   ```bash
-   export ROS_MASTER_URI=http://<robot-ip>:11311  # Set to AMR's IP (Optional for ROS 2)
-   ```
-
----
-
 By setting these environment variables, you ensure that both the **AMR robot** and **Ubuntu laptop** are communicating within the same **DDS domain** and are able to exchange messages across the network.
 
 
