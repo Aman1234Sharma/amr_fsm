@@ -127,12 +127,69 @@ source install/setup.bash
 This will set up the environment to work with your AMR project files and dependencies.
 
 
-## 🚀 Quick Start
+## 🚀 Quick Start all functionalities
 
 ```bash
 # Launch full stack (navigation + odometry + visualization)
 ros2 launch amr_bringup new_robot_bringup.launch.py
 ```
+
+## 📝 **Quick Commands**
+
+Here are some quick commands to help you run different modules of the **AMR system**:
+
+### 1. **Run Motor Driver (For Teleop Control)**
+
+To run the **motor driver** and control the AMR’s motors for teleoperation:
+
+```bash
+ros2 run roboteq_controller driver.py
+```
+
+This command starts the motor controller for teleoperation or direct control of the robot’s movement.
+
+---
+
+### 2. **Do Mapping of the Environment**
+
+To start **mapping** the environment using the AMR's sensors (e.g., LiDAR, camera):
+
+```bash
+ros2 launch amr_mapping_and_odometry mapping.launch.py
+```
+
+This command launches the **mapping** node to create an environment map. **Note**: This may use sensors like LiDAR or camera, depending on your configuration.
+
+---
+
+### 3. **Run Sensor Fusion**
+
+To start **sensor fusion**, which integrates data from multiple sensors (like LiDAR, IMU, and cameras) for a more accurate estimate of the robot's position and orientation:
+
+```bash
+ros2 launch sensor_fusion sensor_fusion.launch.py
+```
+
+This command starts the sensor fusion stack, combining sensor data for localization and odometry.
+
+---
+
+### 4. **Run Navigation Stack**
+
+To run the **navigation stack** for autonomous movement, including path planning and obstacle avoidance:
+
+```bash
+ros2 launch amr_nav nav.launch.py
+```
+
+**Note**: If you want to load a **different map** than the default, make sure to **change the name/path of the map** in the `launch` file. You can do this by modifying the `map.yaml` or directly updating the map file path in the `nav.launch.py` configuration.
+
+---
+
+### **Conclusion**
+
+These quick commands provide easy access to essential functionalities for controlling the robot, mapping the environment, running sensor fusion, and running the navigation stack.
+
 ## 🖥️ Hardware Overview
 
 ### 🤖 Motor
