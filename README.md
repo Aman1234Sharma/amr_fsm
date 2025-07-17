@@ -114,7 +114,7 @@ ros2 launch amr_bringup new_robot_bringup.launch.py
 ```
 ## 🖥️ Hardware Overview
 
-### 🤖 **Motor **
+### 🤖 Motor
 - **Motor Driver**: Roboteq Brushless DC Motor Controller
 - **Base Frame**: `base_link`
   
