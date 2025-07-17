@@ -147,12 +147,10 @@ ros2 launch amr_bringup new_robot_bringup.launch.py
   ## 🔗 Major Tech Stack Used
 
 1. **[RTAB-Map ROS Wiki](http://wiki.ros.org/rtabmap_ros)**
-   - RTAB-Map (Real-Time Appearance-Based Mapping) is a powerful **visual SLAM** library used for localization and mapping. It integrates **RGB-D cameras** like Intel RealSense to create 3D maps of the environment and provide real-time localization.
 
-2. **[Nav2 Documentation](https://navigation.ros.org/)**
-   - **Nav2** is the ROS 2 Navigation Stack. It provides **autonomous navigation**, including path planning, obstacle avoidance, localization, and more. It is an essential component for controlling and moving the AMR autonomously.
+2. **[Nav2 Documentation](https://docs.nav2.org/)**
 
 3. **[Realsense ROS GitHub](https://github.com/IntelRealSense/realsense-ros)**
-   - This repository contains the official **ROS 2 wrapper** for Intel RealSense cameras, enabling easy integration with ROS-based systems for depth sensing, visual SLAM, and object recognition.
+
 
 
