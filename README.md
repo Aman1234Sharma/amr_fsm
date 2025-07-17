@@ -114,7 +114,7 @@ ros2 launch amr_bringup new_robot_bringup.launch.py
 ```
 ## 🖥️ Hardware Overview
 
-### 🤖 **Robot Base**
+### 🤖 **Motor **
 - **Motor Driver**: Roboteq Brushless DC Motor Controller
 - **Base Frame**: `base_link`
   
@@ -125,8 +125,6 @@ ros2 launch amr_bringup new_robot_bringup.launch.py
 - **Base Clock**: 1.9 GHz
 - **Max Clock**: 4.0 GHz
 - **Architecture**: 64-bit
-
----
 
 ## 💾 **Memory (RAM)**
 
