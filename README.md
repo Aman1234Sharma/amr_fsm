@@ -90,6 +90,8 @@ Follow these steps to power on and connect to the AMR wirelessly via SSH:
 
 ⚙️ Note: The AMR is configured with a static IP 192.168.43.227, so you can reliably SSH into it after every boot.
 
+You will be prompted to enter the password:
+
 
 ## 🚀 Quick Start
 
