@@ -117,6 +117,24 @@ ros2 launch amr_bringup new_robot_bringup.launch.py
 ### 🤖 **Robot Base**
 - **Motor Driver**: Roboteq Brushless DC Motor Controller
 - **Base Frame**: `base_link`
+  
+## ⚡ **CPU (Processor)**
+
+- **Model**: Intel(R) Core(TM) i7-8650U CPU @ 1.90GHz
+- **Cores**: 4 cores, 8 threads
+- **Base Clock**: 1.9 GHz
+- **Max Clock**: 4.0 GHz
+- **Architecture**: 64-bit
+
+---
+
+## 💾 **Memory (RAM)**
+
+- **Total Memory**: 16 GB
+  - **Channel A-DIMM0**: 8 GB DDR4 2667 MHz
+  - **Channel B-DIMM0**: 8 GB DDR4 2667 MHz
+- **Slots Used**: 2 out of 4 slots (Two empty slots for possible future upgrades)
+
 
 ### 📡 **Sensors**
 
