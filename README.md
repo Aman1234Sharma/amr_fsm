@@ -106,13 +106,26 @@ source install/setup.bash
 This will set up the environment to work with your AMR project files and dependencies.
 
 
-
-
 ## 🚀 Quick Start
 
 ```bash
 # Launch full stack (navigation + odometry + visualization)
 ros2 launch amr_bringup new_robot_bringup.launch.py
+```
+## 🖥️ Hardware Overview
 
+### 🤖 **Robot Base**
+- **Motor Driver**: Roboteq Brushless DC Motor Controller
+- **Base Frame**: `base_link`
 
+### 📡 **Sensors**
+
+- **LiDAR**: pepperl and fuchs lidar
+  - **Model**: OMD60M-R2000-B23-V1V1D-1L 
+  - **Sensor Type**: 2D LiDAR
+  - **Range**: 0-60 meters
+  - **Scan Rate**: 10-50 hz
+
+- **Camera**: Intel RealSense D435i
+  - **Sensor Type**: RGB-D Camera
 
