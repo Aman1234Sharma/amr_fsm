@@ -83,7 +83,7 @@ Follow these steps to power on and connect to the AMR wirelessly via SSH:
    - **Password**: `iafsm#2017`
 3. ⏳ **Wait 30–60 seconds** for the AMR to automatically connect to the hotspot.
 4. 💻 On your laptop, **connect to the same Wi-Fi network** (`IAFSM24`).
-5. **Ensure both laptop and AMR share the same subnet** (i.e., IPs like `192.168.43.x`). If your laptop's IP is not in the same subnet (e.g., `192.168.43.x`), manually set your laptop’s IP in the       same range (e.g., `192.168.43.100`).
+5. **Ensure both laptop and AMR share the same subnet** (i.e., IPs like `192.168.43.x`). If your laptop's IP is not in the same subnet (e.g., `192.168.43.x`), manually set your laptop’s IP in the       same range (e.g., `192.168.43.100`) (see below section ).
 6. 🔐 Open a terminal on your laptop and run the following command to SSH into the AMR:6. 🔐 Open a terminal and run the following command to SSH into the AMR:
    ```bash
    ssh fsm-amr@192.168.43.227
@@ -94,7 +94,7 @@ You will be prompted to enter the password:
 ```bash
 Password: iafsm#2017
 ```
-## **Method 2: Using Command Line**
+## **Configuring Subnet**
 
 ### **1. Find Your Network Interface Name:**
 
@@ -143,24 +143,6 @@ ping 192.168.43.227
 If you receive replies, then your laptop is successfully connected to the same network as the AMR.
 
 ---
-
-### **5. SSH into the AMR:**
-
-Finally, you can SSH into the **AMR** using the static IP:
-
-```bash
-ssh fsm-amr@192.168.43.227
-```
-
-Enter the password:
-
-```bash
-Password: iafsm#2017
-```
-
----
-
-By following these steps, you will ensure that your laptop is connected to the same network as the AMR and can SSH into it successfully.
 
 ## Set ROS 2 Environment Variables(For the new user, only one time step)
 
