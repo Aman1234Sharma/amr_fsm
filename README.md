@@ -63,7 +63,7 @@ This repository contains the ROS 2 Humble-based software stack developed for con
 ### 🔧 Sensor and Driver Packages
 
 - `pf_lidar_ros2_driver`:
-  - ROS 2 driver for the ProFusion LiDAR used onboard the AMR.
+  - ROS 2 driver for the Pepperl and Fuchs lidar LiDAR used onboard the AMR.
 
 - `realsense_ros`:
   - Official Intel RealSense ROS 2 wrapper for the D435i camera.
