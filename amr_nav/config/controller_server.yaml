@@ -19,7 +19,7 @@
 
       general_goal_checker:
         plugin: "nav2_controller::SimpleGoalChecker"
-        xy_goal_tolerance: 0.5 # default = 0.25
+        xy_goal_tolerance: 0.25 # default = 0.25
         yaw_goal_tolerance: 0.25
         stateful: True
         latch_xy_goal_tolerance: true
@@ -33,7 +33,7 @@
         vx_std: 0.4 #tune
         vy_std: 0.4 #tune 
         wz_std: 0.4 #tune
-        vx_max: 0.5 #tune
+        vx_max: 1.0 #tune
         vx_min: -0.4   #tune
         vy_max: 0.0 #tune
         wz_max: 0.5 #tune
@@ -256,6 +256,6 @@
         inflation_layer:
           plugin: "nav2_costmap_2d::InflationLayer"
           cost_scaling_factor: 3.0
-          inflation_radius: 0.45
+          inflation_radius: 0.55
         always_send_full_costmap: True
 
