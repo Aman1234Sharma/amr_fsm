@@ -105,6 +105,7 @@ ip a
 ```
 
 Find the interface name for your connection (e.g., `wlp3s0` for Wi-Fi, `enp2s0` for Ethernet).
+Under the desired interface, look for the inet field, which shows the IPv4 address
 
 ---
 
