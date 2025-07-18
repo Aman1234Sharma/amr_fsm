@@ -63,7 +63,7 @@ This repository contains the ROS 2 Humble-based software stack developed for con
 ### 🔧 Sensor and Driver Packages
 
 - `pf_lidar_ros2_driver`:
-  - ROS 2 driver for the ProFusion LiDAR used onboard the AMR.
+  - ROS 2 driver for the Pepperl and Fuchs lidar LiDAR used onboard the AMR.
 
 - `realsense_ros`:
   - Official Intel RealSense ROS 2 wrapper for the D435i camera.
@@ -71,7 +71,6 @@ This repository contains the ROS 2 Humble-based software stack developed for con
 - `roboteq_motor_driver`:
   - Custom ROS 2 driver to interface with Roboteq motor controllers for mobile base control.
 
----
 ---
 
 ## 🔌 Connecting to the AMR
@@ -84,7 +83,8 @@ Follow these steps to power on and connect to the AMR wirelessly via SSH:
    - **Password**: `iafsm#2017`
 3. ⏳ **Wait 30–60 seconds** for the AMR to automatically connect to the hotspot.
 4. 💻 On your laptop, **connect to the same Wi-Fi network** (`IAFSM24`).
-5. 🔐 Open a terminal and run the following command to SSH into the AMR:
+5. **Ensure both laptop and AMR share the same subnet** (i.e., IPs like `192.168.43.x`). If your laptop's IP is not in the same subnet (e.g., `192.168.43.x`), manually set your laptop’s IP in the       same range (e.g., `192.168.43.100`) (see below section ).
+6. 🔐 Open a terminal on your laptop and run the following command to SSH into the AMR:6. 🔐 Open a terminal and run the following command to SSH into the AMR:
    ```bash
    ssh fsm-amr@192.168.43.227
 
@@ -94,6 +94,77 @@ You will be prompted to enter the password:
 ```bash
 Password: iafsm#2017
 ```
+## **Configuring Subnet**
+
+### **1. Find Your Network Interface Name:**
+
+Run this command to list all network interfaces:
+
+```bash
+ip a
+```
+
+Find the interface name for your connection (e.g., `wlp3s0` for Wi-Fi, `enp2s0` for Ethernet).
+Under the desired interface, look for the inet field, which shows the IPv4 address
+
+---
+
+### **2. Assign a Static IP to the Interface (replace `wlp3s0` with your actual interface):**
+
+Run the following command to assign a static IP within the `192.168.43.x` range:
+
+```bash
+sudo ip addr add 192.168.43.100/24 dev wlp3s0
+```
+
+This sets your IP address to `192.168.43.100` on the **Wi-Fi** interface (`wlp3s0` in this case).
+
+---
+
+### **3. Verify the New IP:**
+
+Run the following command to verify the new IP address:
+
+```bash
+ip a
+```
+
+You should now see the new IP (`192.168.43.100` or whichever you set).
+
+---
+
+### **4. Test the Connection:**
+
+After setting the static IP in the same subnet (`192.168.43.x`), test the connection to the **AMR** using **ping**:
+
+```bash
+ping 192.168.43.227
+```
+
+If you receive replies, then your laptop is successfully connected to the same network as the AMR.
+
+---
+
+## Set ROS 2 Environment Variables(For the new user, only one time step)
+
+### On your Laptop:
+
+1. **Set `ROS_DOMAIN_ID`**:
+   - Use the same domain ID as the AMR to ensure both systems are communicating in the same DDS domain:
+
+   ```bash
+   export ROS_DOMAIN_ID=30  # Since on AMR ROS_DOMAIN_ID is already set as 30
+   ```
+
+2. **Set `ROS_HOSTNAME`**:
+   - Replace `<pc-ip>` with the IP address of your laptop:
+
+   ```bash
+   export ROS_HOSTNAME=<pc-ip>  # Set to your laptop's IP address
+   ```
+By setting these environment variables, you ensure that both the **AMR robot** and **Ubuntu laptop** are communicating within the same **DDS domain** and are able to exchange messages across the network.(just run a simple turtlesim node on amr and check whether that topic is echoed in your remote laptop to check data transmission is working or not)
+
+
 ## 📁 Accessing Files in the Docker Container
 
 Once logged in via SSH, you can access the files in the Docker container by running the following commands:
@@ -106,12 +177,40 @@ source install/setup.bash
 This will set up the environment to work with your AMR project files and dependencies.
 
 
-## 🚀 Quick Start
+## 🚀 Quick Start all functionalities
 
 ```bash
 # Launch full stack (navigation + odometry + visualization)
 ros2 launch amr_bringup new_robot_bringup.launch.py
 ```
+
+## 📝 **Quick Commands**
+
+Here are some quick commands to help you run different modules of the **AMR system**:
+
+### 1. **Run Motor Driver (For Teleop Control)**
+
+```bash
+ros2 run roboteq_controller driver.py
+```
+### 2. **Do Mapping of the Environment**
+
+```bash
+ros2 launch amr_mapping_and_odometry mapping.launch.py
+```
+### 3. **Run Sensor Fusion**
+
+```bash
+ros2 launch sensor_fusion sensor_fusion.launch.py
+```
+### 4. **Run Navigation Stack**
+
+```bash
+ros2 launch amr_nav nav.launch.py
+```
+**Note**: If you want to load a **different map** than the default, make sure to **change the name/path of the map** in the `launch` file. You can do this by updating the map file path in the `nav.launch.py` configuration.
+
+---
 ## 🖥️ Hardware Overview
 
 ### 🤖 Motor
