@@ -94,6 +94,73 @@ You will be prompted to enter the password:
 ```bash
 Password: iafsm#2017
 ```
+## **Method 2: Using Command Line**
+
+### **1. Find Your Network Interface Name:**
+
+Run this command to list all network interfaces:
+
+```bash
+ip a
+```
+
+Find the interface name for your connection (e.g., `wlp3s0` for Wi-Fi, `enp2s0` for Ethernet).
+
+---
+
+### **2. Assign a Static IP to the Interface (replace `wlp3s0` with your actual interface):**
+
+Run the following command to assign a static IP within the `192.168.43.x` range:
+
+```bash
+sudo ip addr add 192.168.43.100/24 dev wlp3s0
+```
+
+This sets your IP address to `192.168.43.100` on the **Wi-Fi** interface (`wlp3s0` in this case).
+
+---
+
+### **3. Verify the New IP:**
+
+Run the following command to verify the new IP address:
+
+```bash
+ip a
+```
+
+You should now see the new IP (`192.168.43.100` or whichever you set).
+
+---
+
+### **4. Test the Connection:**
+
+After setting the static IP in the same subnet (`192.168.43.x`), test the connection to the **AMR** using **ping**:
+
+```bash
+ping 192.168.43.227
+```
+
+If you receive replies, then your laptop is successfully connected to the same network as the AMR.
+
+---
+
+### **5. SSH into the AMR:**
+
+Finally, you can SSH into the **AMR** using the static IP:
+
+```bash
+ssh fsm-amr@192.168.43.227
+```
+
+Enter the password:
+
+```bash
+Password: iafsm#2017
+```
+
+---
+
+By following these steps, you will ensure that your laptop is connected to the same network as the AMR and can SSH into it successfully.
 
 ## Set ROS 2 Environment Variables(For the new user, only one time step)
 
